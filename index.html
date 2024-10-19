@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K A R M A | Unveil Your Mind</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="background-animation"></div>
+    <div id="content">
+        <header>
+            <h1 id="title">K A R M A</h1>
+            <p id="subtitle">Unveil Your Mind</p>
+        </header>
+        
+        <nav id="hidden-nav">
+            <ul>
+                <li><a href="#observer" class="nav-link">The Observer</a></li>
+                <li><a href="#labyrinth" class="nav-link">Mind Labyrinth</a></li>
+                <li><a href="#eye" class="nav-link">The Eye of Truth</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="observer">
+                <div class="silhouette"></div>
+                <p class="cryptic-message">I see you. How well do you hide?</p>
+            </section>
+
+            <section id="labyrinth">
+                <h2>Mind Labyrinth</h2>
+                <div id="maze">
+                    <div class="maze-option" data-choice="1">Trust your instincts</div>
+                    <div class="maze-option" data-choice="2">Question everything</div>
+                    <div class="maze-option" data-choice="3">Embrace the unknown</div>
+                </div>
+                <p id="maze-result"></p>
+            </section>
+
+            <section id="eye">
+                <h2>The Eye of Truth</h2>
+                <div id="truth-eye"></div>
+                <p id="eye-message"></p>
+            </section>
+        </main>
+
+        <footer>
+            <p id="footer-message">Every move has been noted. What will you do next?</p>
+        </footer>
+    </div>
+
+    <div id="exit-message" class="hidden">
+        <p>You're not done yet.</p>
+    </div>
+
+    <audio id="background-sound" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

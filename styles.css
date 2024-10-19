@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #0a0000;
+    --text-color: #ff3333;
+    --accent-color: #990000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: opacity 1s ease;
+}
+
+/* Ensuring the z-index of interactive elements is higher */
+#background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+#content {
+    position: relative;
+    z-index: 10;
+}
+
+#maze, #truth-eye {
+    z-index: 12;
+}
+
+#exit-message {
+    z-index: 1000;
+}
+
+.ink-drop {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    animation: inkSpread 5s ease-out;
+    pointer-events: none;
+}
+
+@keyframes inkSpread {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(20); opacity: 0; }
+}
+
+#content {
+    position: relative;
+    z-index: 10;
+    padding: 3rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#title {
+    font-size: 4rem;
+    letter-spacing: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+    z-index: 12;
+}
+
+#title.glitch::before,
+#title.glitch::after {
+    content: 'K A R M A';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+#title.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+#title.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #ff00c1, 2px 2px #ff00c1;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    4.166666667% { clip: rect(91px, 9999px, 43px, 0); }
+    8.333333333% { clip: rect(15px, 9999px, 13px, 0); }
+    12.5% { clip: rect(75px, 9999px, 57px, 0); }
+    16.66666667% { clip: rect(8px, 9999px, 4px, 0); }
+    20.83333333% { clip: rect(69px, 9999px, 70px, 0); }
+    25% { clip: rect(75px, 9999px, 53px, 0); }
+    29.16666667% { clip: rect(40px, 9999px, 78px, 0); }
+    33.33333333% { clip: rect(56px, 9999px, 20px, 0); }
+    37.5% { clip: rect(79px, 9999px, 71px, 0); }
+    41.66666667% { clip: rect(17px, 9999px, 31px, 0); }
+    45.83333333% { clip: rect(90px, 9999px, 89px, 0); }
+    50% { clip: rect(60px, 9999px, 81px, 0); }
+    54.16666667% { clip: rect(30px, 9999px, 61px, 0); }
+    58.33333333% { clip: rect(62px, 9999px, 26px, 0); }
+    62.5% { clip: rect(60px, 9999px, 25px, 0); }
+    66.66666667% { clip: rect(56px, 9999px, 57px, 0); }
+    70.83333333% { clip: rect(30px, 9999px, 2px, 0); }
+    75% { clip: rect(98px, 9999px, 39px, 0); }
+    79.16666667% { clip: rect(28px, 9999px, 74px, 0); }
+    83.33333333% { clip: rect(52px, 9999px, 67px, 0); }
+    87.5% { clip: rect(15px, 9999px, 9px, 0); }
+    91.66666667% { clip: rect(51px, 9999px, 100px, 0); }
+    95.83333333% { clip: rect(45px, 9999px, 65px, 0); }
+    100% { clip: rect(86px, 9999px, 98px, 0); }
+}
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(65px, 9999px, 200px, 0); }
+    100% { clip: rect(147px, 9999px, 150px, 0); }
+}
+
+#subtitle {
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+
+#hidden-nav {
+    position: fixed;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease;
+}
+
+#hidden-nav ul {
+    list-style-type: none;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
+
+section {
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.silhouette {
+    width: 200px;
+    height: 300px;
+    background-color: var(--accent-color);
+    margin: 0 auto;
+    mask-image: url('');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.cryptic-message {
+    text-align: center;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+#maze {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    z-index: 12;
+}
+
+.maze-option {
+    padding: 1rem;
+    border: 1px solid var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.maze-option:hover {
+    background-color: var(--accent-color);
+}
+
+#maze-result {
+    margin-top: 2rem;
+    text-align: center;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#truth-eye {
+    width: 100px;
+    height: 100px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    margin: 2rem auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 12;
+}
+
+#truth-eye:hover {
+    transform: scale(1.1);
+}
+
+#eye-message {
+    text-align: center;
+    font-style: italic;
+    margin-top: 1rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+#exit-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    
+
+}
+
+#exit-message.visible {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.cryptic-flash {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 5px;
+    font-style: italic;
+    animation: flashMessage 2s ease-in-out;
+}
+
+@keyframes flashMessage {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+}
