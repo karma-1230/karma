@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.onload = function() {
         backgroundSound.play();
-        backgroundSound.volume = 30; // Adjust volume as needed
+        backgroundSound.volume = 1; // Adjust volume as needed
     };
 
     // Background animation: Ink drops
