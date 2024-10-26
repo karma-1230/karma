@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const pupil = document.querySelector('.pupil');
 
 
+    window.onload = function() {
+        backgroundSound.play();
+        backgroundSound.volume = 30; // Adjust volume as needed
+    };
+
     // Background animation: Ink drops
     function createInkDrop() {
         const drop = document.createElement('div');
