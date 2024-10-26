@@ -132,5 +132,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
     }
 
+     // Mobile menu toggle
+     menuIcon.addEventListener('click', () => {
+        menuContent.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !menuContent.classList.contains('hidden')) {
+            menuContent.classList.add('hidden');
+        }
+    });
+
+    // Adjust ink drop creation for mobile
+    function createInkDrop() {
+        const drop = document.createElement('div');
+        drop.classList.add('ink-drop');
+        drop.style.left = `${Math.random() * 100}%`;
+        drop.style.top = `${Math.random() * 100}%`;
+        drop.style.animationDuration = `${Math.random() * 2 + 1}s`;
+        backgroundAnimation.appendChild(drop);
+        setTimeout(() => {
+            drop.remove();
+        }, 3000);
+    }
+
+    // Adjust interval for mobile
+    const isMobile = window.innerWidth <= 768;
+    setInterval(createInkDrop, isMobile ? 2000 : 1000);
+
+    // Mobile-specific interactions
+    if (isMobile) {
+        // Replace hover effects with touch events
+        title.addEventListener('touchstart', () => {
+            title.classList.add('glitch');
+        });
+
+        title.addEventListener('touchend', () => {
+            title.classList.remove('glitch');
+        });
+
+        // Adjust the Eye of Truth interaction
+        truthEye.addEventListener('touchstart', () => {
+            truthEye.style.transform = 'scale(1.2)';
+            document.body.style.opacity = '0.5';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+                truthEye.style.transform = 'scale(1)';
+                eyeMessage.textContent = "The truth is within your grasp.";
+                eyeMessage.style.display = 'block';
+                setTimeout(() => {
+                    eyeMessage.style.opacity = '1';
+                }, 10);
+            }, 1000);
+        });
+    }
+
     setInterval(displayCrypticMessage, 10000);
 });
