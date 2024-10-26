@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
     const menuContent = document.getElementById('menu-content');
+    const eye = document.querySelector('.eye');
+    const pupil = document.querySelector('.pupil');
 
 
     // Background animation: Ink drops
@@ -191,6 +193,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         });
     }
+
+    const movePupil = (e) => {
+        const eyeRect = eye.getBoundingClientRect();
+        const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+        const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+        const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+        const distance = Math.min(eyeRect.width / 8, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 5);
+        const pupilX = Math.cos(angle) * distance;
+        const pupilY = Math.sin(angle) * distance;
+        pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+    };
+
+    // Mouse movement
+    document.addEventListener('mousemove', movePupil);
+
+    // Touch movement
+    document.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        movePupil(touch);
+    });
+
+    // Reset pupil position when not interacting
+    const resetPupil = () => {
+        pupil.style.transform = 'translate(0, 0)';
+    };
+
+    document.addEventListener('mouseleave', resetPupil);
+    document.addEventListener('touchend', resetPupil);
 
     setInterval(displayCrypticMessage, 10000);
 });
