@@ -147,6 +147,7 @@ header {
     right: 2rem;
     transform: translateY(-50%);
     transition: opacity 0.3s ease;
+    z-index: 1000; 
 }
 
 #hidden-nav ul {
@@ -160,10 +161,12 @@ header {
     transition: opacity 0.3s ease;
     display: block;
     margin-bottom: 1rem;
+    cursor: pointer;
 }
 
 .nav-link:hover {
     opacity: 1;
+    cursor: pointer;
 }
 
 section {
