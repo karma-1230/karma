@@ -291,3 +291,84 @@ footer {
     0%, 100% { opacity: 0; }
     10%, 90% { opacity: 1; }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #0a0000;
+    --text-color: #ff3333;
+    --accent-color: #990000;
+}
+
+
+@media (max-width: 768px) {
+    #content {
+        padding: 1rem;
+    }
+
+    #title {
+        font-size: 2.5rem;
+    }
+
+    #subtitle {
+        font-size: 1rem;
+    }
+
+    #hidden-nav {
+        display: none;
+    }
+
+    #mobile-menu {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1000;
+    }
+
+    #menu-icon {
+        font-size: 2rem;
+        color: var(--text-color);
+        cursor: pointer;
+    }
+
+    #menu-content {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: rgba(10, 0, 0, 0.9);
+        padding: 1rem;
+        border-radius: 5px;
+    }
+
+    #menu-content a {
+        display: block;
+        color: var(--text-color);
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+    }
+
+    #maze {
+        flex-direction: column;
+    }
+
+    .maze-option {
+        margin-bottom: 1rem;
+    }
+
+    #truth-eye {
+        width: 80px;
+        height: 80px;
+    }
+
+    .ink-drop {
+        width: 5px;
+        height: 5px;
+    }
+
+    @keyframes inkSpread {
+        0% { transform: scale(1); opacity: 0.7; }
+        100% { transform: scale(10); opacity: 0; }
+    }
+}
+
