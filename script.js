@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Background sound plays once when the page is clicked
-    document.addEventListener('mouseover', () => {
+    document.body.addEventListener('click', () => {
         backgroundSound.play().catch(error => console.log('Audio playback failed:', error));
     }, { once: true });
 
