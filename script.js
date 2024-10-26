@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const exitMessage = document.getElementById('exit-message');
     const backgroundSound = document.getElementById('background-sound');
     const title = document.getElementById('title');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const menuContent = document.getElementById('menu-content');
+
 
     // Background animation: Ink drops
     function createInkDrop() {
