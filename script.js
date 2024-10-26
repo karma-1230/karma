@@ -16,10 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pupil = document.querySelector('.pupil');
 
 
-    window.onload = function() {
-        backgroundSound.play();
-        backgroundSound.volume = 1; // Adjust volume as needed
-    };
 
     // Background animation: Ink drops
     function createInkDrop() {
@@ -111,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Background sound plays once when the page is clicked
-    document.body.addEventListener('click', () => {
+    document.addEventListener('mouseover', () => {
         backgroundSound.play().catch(error => console.log('Audio playback failed:', error));
     }, { once: true });
 
